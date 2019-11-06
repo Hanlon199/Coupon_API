@@ -7,6 +7,7 @@ import java.util.HashMap;
 
 public class API{
     public static void queryAPI(String url, String key) throws Exception{
+            url = url + "/search?q=" + key + "&search_mode=Deals";
             URL reqUrl = new URL(url);
             URLConnection yc = reqUrl.openConnection();
             BufferedReader in = new BufferedReader(new InputStreamReader(yc.getInputStream()));
