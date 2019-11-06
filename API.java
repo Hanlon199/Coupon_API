@@ -14,15 +14,16 @@ public class API{
             HashMap <String, String> map = new HashMap<String, String>();
     
             while ((inputLine = in.readLine()) != null){
-                if (inputLine.indexOf("dealcontent") > -1 && inputLine.indexOf("Expired") == -1 && inputLine.indexOf("commentdetail") == -1) {
+                // && inputLine.indexOf("commentdetail") == -1
+                if (inputLine.indexOf("dealcontent") > -1 && inputLine.indexOf("Expired") == -1) {
                     String link = "";
                     String value = "";
                     String[] lines = inputLine.split(" ");
-                    System.out.println(Arrays.toString(lines));
+                    // System.out.println(Arrays.toString(lines));
                     int start = 0;
                     for (String phrase : lines) {
                         if (phrase.indexOf("dealcontent") > -1) {
-                            System.out.println(start);
+                            // System.out.println(start);
                             break;
                         }
                         start++;
@@ -34,15 +35,21 @@ public class API{
                         int valEnd = 0;
                         if (lines[start+i].indexOf("href=") > -1) {
                             linkStart = lines[start+i].indexOf("href=");
-                            System.out.println(lines[start+i]);
+                            // System.out.println(lines[start+i]);
                             temp = linkStart+6;
                             while(lines[start+i].charAt(temp) != 34){
                                 temp++;
                             }
                             link = lines[start+i].substring(linkStart+6, temp);
                         }else if(lines[start+i].indexOf("</a>") == -1){
-                            value += lines[start+i];
+                            value += lines[start+i] + " ";
                         }else{
+                            // System.out.println(lines[start+i]);
+                            int z = 0;
+                            while(lines[start+i].charAt(z) != 60){
+                                value += lines[start+i].charAt(z);
+                                z++;
+                            }
                             break;
                         }
                         // System.out.println(link);
@@ -55,7 +62,7 @@ public class API{
             for (String x: map.keySet()){
                 String keyX = x.toString();
                 String value = map.get(x).toString();  
-                System.out.println("Deal Found here: " + keyX + " with value of " + value);
+                System.out.println("Deal Found here: " + keyX + " with value of \"" + value + "\"");
             } 
             in.close();
             
