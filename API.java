@@ -7,6 +7,7 @@ import java.util.HashMap;
 
 public class API{
     public static void queryAPI(String url, String key) throws Exception{
+            String baseUrl = url;
             url = url + "/search?q=" + key + "&search_mode=Deals";
             URL reqUrl = new URL(url);
             URLConnection yc = reqUrl.openConnection();
@@ -63,7 +64,7 @@ public class API{
             for (String x: map.keySet()){
                 String keyX = x.toString();
                 String value = map.get(x).toString();  
-                System.out.println("Deal Found here: " + keyX + " with value of \"" + value + "\"");
+                System.out.println("Found deals on: " + (baseUrl+keyX) + " with value of \"" + value + "\"");
             } 
             in.close();
             
