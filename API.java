@@ -36,6 +36,7 @@ public class API{
                         int valStart = 0;
                         int valEnd = 0;
                         if (lines[start+i].indexOf("href=") > -1) {
+                            //get link using href as a index
                             linkStart = lines[start+i].indexOf("href=");
                             // System.out.println(lines[start+i]);
                             temp = linkStart+6;
@@ -44,7 +45,11 @@ public class API{
                             }
                             link = lines[start+i].substring(linkStart+6, temp);
                         }else if(lines[start+i].indexOf("</a>") == -1){
-                            value += lines[start+i] + " ";
+                            //parse the lines after the link to get the values
+                            // System.out.println(lines[start+i]);
+                            if (lines[start+i].indexOf("class=") == -1) {
+                                value += lines[start+i] + " ";
+                            }
                         }else{
                             // System.out.println(lines[start+i]);
                             int z = 0;
@@ -64,7 +69,7 @@ public class API{
             for (String x: map.keySet()){
                 String keyX = x.toString();
                 String value = map.get(x).toString();  
-                System.out.println("Found deals on: " + (baseUrl+keyX) + " ----- \"" + value + "\"");
+                System.out.println("Found deals on: " + (baseUrl+keyX) + " => \"" + value + "\"");
             } 
             in.close();
             
