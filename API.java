@@ -64,7 +64,7 @@ public class API{
             for (String x: map.keySet()){
                 String keyX = x.toString();
                 String value = map.get(x).toString();  
-                System.out.println("Found deals on: " + (baseUrl+keyX) + " with value of \"" + value + "\"");
+                System.out.println("Found deals on: " + (baseUrl+keyX) + " ----- \"" + value + "\"");
             } 
             in.close();
             
