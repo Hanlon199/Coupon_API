@@ -13,7 +13,7 @@ public class Main extends JFrame{
 
 	
     public static void main(String[] args) throws Exception {
-    	Main main = new Main();
+    	
     
      
         API api = new API();
@@ -52,6 +52,7 @@ public class Main extends JFrame{
         	 
            }    
            });
+           timer.start();
         }
         // https://dealsea.com/search?q=router&search_mode=Deals
        
